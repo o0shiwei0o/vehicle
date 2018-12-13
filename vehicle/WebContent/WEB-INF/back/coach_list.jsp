@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon"/>
+		<!--Favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+		<!--Bootstrap.min css-->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+
+		<!--Icons css-->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/icons.css">
+
+		<!--Style css-->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style1.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.mCustomScrollbar.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidemenu.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/chartist.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/chartist-plugin-tooltip.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet1.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/morris.css">
+
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+
+		<!--Sidemenu css-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins/toggle-menu/sidemenu.css">
+
+		<!--DataTables css-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins/Datatable/css/dataTables.bootstrap4.css">
 <title>后台管理</title>
 </head>
 <body class="app ">
@@ -108,11 +119,63 @@
 						</li>
 					</ul>
 				</aside>
+				<div class="app-content">
+					<section class="section">
+                    	<ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+                        </ol>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header">
+										<h4>Defalut Datatables</h4>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+										<table id="example" class="table table-striped table-bordered border-t0 text-nowrap w-100" >
+											<thead>
+												<tr>
+													<th class="wd-15p">账户</th>
+													<th class="wd-15p">姓名</th>
+													<th class="wd-20p">手机号码</th>
+													<th class="wd-10p">驾校</th>
+													<th class="wd-15p">状态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${requestScope.coachList}" var="coach">
+													<tr>
+														<td>${coach.COACH_ACCOUNT}</td>
+														<td>${coach.COACH_NAME}</td>
+														<td>${coach.COACH_PHONE}</td>
+														<td>${coach.SCHOOL_NAME}</td>
+														<td>${coach.PARAMETER_NAME}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</section>
+				</div>
+				<footer class="main-footer">
+					<div class="text-center">
+						Copyright &copy;Kharna-Admin 2018. Design By<a href="https://spruko.com/"> Spruko</a>
+					</div>
+				</footer>
+
 			</div>
-		</div>	
-		
+		</div>
+
 		<!--Jquery.min js-->
 		<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+
 		<!--popper js-->
 		<script src="${pageContext.request.contextPath}/js/popper.js"></script>
 
@@ -134,22 +197,18 @@
 		<!--mCustomScrollbar js-->
 		<script src="${pageContext.request.contextPath}/js/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
 
-		<!-- ECharts -->
-		<%-- <script src="${pageContext.request.contextPath}/js/plugins/echarts/dist/echarts.js"></script> --%>
-
-		<!--Min Calendar -->
-		<script src="${pageContext.request.contextPath}/js/plugins/fullcalendar/calendar.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/plugins/fullcalendar/custom_calendar.js"></script>
-
-		<!--Morris js-->
-		<script src="${pageContext.request.contextPath}/js/plugins/morris/morris.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/plugins/morris/raphael.min.js"></script>	
+		<!--DataTables js-->
+		<script src="${pageContext.request.contextPath}/js/plugins/Datatable/js/jquery.dataTables.js"></script>
+		<script src="${pageContext.request.contextPath}/js/plugins/Datatable/js/dataTables.bootstrap4.js"></script>
 
 		<!--Scripts js-->
 		<script src="${pageContext.request.contextPath}/js/scripts.js"></script>
-		<!--Dashboard js-->
-	<%-- 	<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
-		<script src="${pageContext.request.contextPath}/js/apexcharts.js"></script> --%>
-</body>
 
+		<script>
+			$(function(e) {
+				$('#example').DataTable();
+			} );
+		</script>
+
+	</body>
 </html>
