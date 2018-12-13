@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.great.bean.User">
+    <id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="USER_ACCOUNT" jdbcType="VARCHAR" property="userAccount" />
+    <result column="USER_PWD" jdbcType="VARCHAR" property="userPwd" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="USER_PHONE" jdbcType="VARCHAR" property="userPhone" />
+    <result column="USER_CARD" jdbcType="VARCHAR" property="userCard" />
+    <result column="USER_LEVEL" jdbcType="DECIMAL" property="userLevel" />
+    <result column="COACH_ID" jdbcType="DECIMAL" property="coachId" />
+    <result column="SCHOOL_ID" jdbcType="DECIMAL" property="schoolId" />
+    <result column="USER_STATE" jdbcType="DECIMAL" property="userState" />
+    <result column="USER_DATE" jdbcType="TIMESTAMP" property="userDate" />
+    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+  </resultMap>
+</mapper>

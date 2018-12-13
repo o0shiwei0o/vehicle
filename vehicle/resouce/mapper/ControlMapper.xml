@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.ControlMapper">
+  <resultMap id="BaseResultMap" type="com.great.bean.Control">
+    <id column="CONTROL_ID" jdbcType="DECIMAL" property="controlId" />
+    <result column="CONTROL_ACCOUNT" jdbcType="VARCHAR" property="controlAccount" />
+    <result column="CONTROL_PWD" jdbcType="VARCHAR" property="controlPwd" />
+    <result column="CONTROL_NAME" jdbcType="VARCHAR" property="controlName" />
+    <result column="CONTROL_STATE" jdbcType="DECIMAL" property="controlState" />
+    <result column="CONTROL_DATE" jdbcType="TIMESTAMP" property="controlDate" />
+    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+  </resultMap>
+ 
+</mapper>

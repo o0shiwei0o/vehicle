@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.SchoolMapper">
+  <resultMap id="BaseResultMap" type="com.great.bean.School">
+    <id column="SCHOOL_ID" jdbcType="DECIMAL" property="schoolId" />
+    <result column="SCHOOL_ACCOUNT" jdbcType="VARCHAR" property="schoolAccount" />
+    <result column="SCHOOL_PWD" jdbcType="VARCHAR" property="schoolPwd" />
+    <result column="SCHOOL_NAME" jdbcType="VARCHAR" property="schoolName" />
+    <result column="SCHOOL_STATE" jdbcType="DECIMAL" property="schoolState" />
+    <result column="SCHOOL_DATE" jdbcType="TIMESTAMP" property="schoolDate" />
+    <result column="SCHOOL_LICENSE" jdbcType="VARCHAR" property="schoolLicense" />
+    <result column="SCHOOL_MASTER" jdbcType="VARCHAR" property="schoolMaster" />
+    <result column="SCHOOL_PHONE" jdbcType="VARCHAR" property="schoolPhone" />
+    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+  </resultMap>
+</mapper>
