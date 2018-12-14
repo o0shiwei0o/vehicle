@@ -20,4 +20,13 @@ public class SchoolService {
 	public boolean addSchool(School school) throws Exception {
 		return schoolMapper.addSchool(school);
 	}
+	public boolean del(int schoolId) throws Exception{
+		return schoolMapper.del(schoolId)>0;
+	}
+	public boolean update(int schoolId) throws Exception{
+		return schoolMapper.update(schoolId)>0;
+	}
+	public Map<String,Object> queryAll() throws Exception{
+		return schoolMapper.queryAll();
+	}
 }

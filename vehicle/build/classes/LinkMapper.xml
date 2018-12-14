@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.LinkMapper">
-  <resultMap id="BaseResultMap" type="com.great.bean.Link">
-    <result column="LINK_ID" jdbcType="DECIMAL" property="linkId" />
-    <result column="LINK_NAME" jdbcType="VARCHAR" property="linkName" />
-    <result column="LINK_ADDRESS" jdbcType="VARCHAR" property="linkAddress" />
-    <result column="LINK_STATE" jdbcType="DECIMAL" property="linkState" />
-    <result column="LINK_DATE" jdbcType="TIMESTAMP" property="linkDate" />
-  </resultMap>
+
+	<resultMap id="BaseResultMap" type="com.great.bean.Link">
+		<result column="LINK_ID" jdbcType="DECIMAL" property="linkId" />
+		<result column="LINK_NAME" jdbcType="VARCHAR"
+			property="linkName" />
+		<result column="LINK_ADDRESS" jdbcType="VARCHAR"
+			property="linkAddress" />
+		<result column="LINK_STATE" jdbcType="DECIMAL"
+			property="linkState" />
+		<result column="LINK_DATE" jdbcType="TIMESTAMP"
+			property="linkDate" />
+	</resultMap>
+
+	<!-- 添加 -->
+	<insert id="add" parameterType="com.great.bean.Link">
+		insert into T_LINK (LINK_ID,LINK_NAME,LINK_ADDRESS)
+		values(SEQ_T_LINK.NEXTVAL,#{linkName},#{linkAddress});
+	</insert>
+	<!-- 删除 -->
+	<update id="del" parameterType="com.great.bean.Link">
+		update T_LINK set LINK_STATE=99 where LINK_ID=#{linkId};
+	</update>
+	<!-- 修改 -->
+	<update id="update" parameterType="com.great.bean.Link">
+		update T_LINK SET LINK_NAME=#{linkName},LINK_ADDRESS=#{linkAddress} where
+		LINK_ID=#{linkId};
+	</update>
+	<!-- 查询随机5条数据 -->
+	<select id="queryRandom" parameterType="com.great.bean.Link"
+		resultType="java.util.Map">
+		select * from (select * from T_LINK where LINK_STATE!=99 
+		order by dbms_random.value) where ROWNUM &lt;=  5
+	</select>
+	<!-- 查询全部数据 -->
+	<select id="queryAll" parameterType="com.great.bean.Link"
+		resultType="java.util.Map">
+		select * from T_LINK where LINK_STATE!=99;
+	</select>
+	
 </mapper>

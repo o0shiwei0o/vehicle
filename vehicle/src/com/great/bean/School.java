@@ -3,103 +3,103 @@ package com.great.bean;
 import java.util.Date;
 
 public class School {
-    private Integer schoolId;
+	private Integer schoolId;// 驾校ID
 
-    private String schoolAccount;
+	private String schoolAccount;// 驾校账号
 
-    private String schoolPwd;
+	private String schoolPwd;// 驾校密码
 
-    private String schoolName;
+	private String schoolName;// 驾校名字
 
-    private Integer schoolState;
+	private Integer schoolState;// 驾校状态
 
-    private Date schoolDate;
+	private Date schoolDate;// 驾校添加日期
 
-    private String schoolLicense;
+	private String schoolLicense;// 驾校执照
 
-    private String schoolMaster;
+	private String schoolMaster;// 驾校管理者
 
-    private String schoolPhone;
+	private String schoolPhone;// 驾校电话
 
-    private Integer roleId;
+	private Integer roleId;// 角色ID
 
-    public Integer getSchoolId() {
-        return schoolId;
-    }
+	public Integer getSchoolId() {
+		return schoolId;
+	}
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
-    }
+	public void setSchoolId(Integer schoolId) {
+		this.schoolId = schoolId;
+	}
 
-    public String getSchoolAccount() {
-        return schoolAccount;
-    }
+	public String getSchoolAccount() {
+		return schoolAccount;
+	}
 
-    public void setSchoolAccount(String schoolAccount) {
-        this.schoolAccount = schoolAccount == null ? null : schoolAccount.trim();
-    }
+	public void setSchoolAccount(String schoolAccount) {
+		this.schoolAccount = schoolAccount == null ? null : schoolAccount.trim();
+	}
 
-    public String getSchoolPwd() {
-        return schoolPwd;
-    }
+	public String getSchoolPwd() {
+		return schoolPwd;
+	}
 
-    public void setSchoolPwd(String schoolPwd) {
-        this.schoolPwd = schoolPwd == null ? null : schoolPwd.trim();
-    }
+	public void setSchoolPwd(String schoolPwd) {
+		this.schoolPwd = schoolPwd == null ? null : schoolPwd.trim();
+	}
 
-    public String getSchoolName() {
-        return schoolName;
-    }
+	public String getSchoolName() {
+		return schoolName;
+	}
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName == null ? null : schoolName.trim();
-    }
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName == null ? null : schoolName.trim();
+	}
 
-    public Integer getSchoolState() {
-        return schoolState;
-    }
+	public Integer getSchoolState() {
+		return schoolState;
+	}
 
-    public void setSchoolState(Integer schoolState) {
-        this.schoolState = schoolState;
-    }
+	public void setSchoolState(Integer schoolState) {
+		this.schoolState = schoolState;
+	}
 
-    public Date getSchoolDate() {
-        return schoolDate;
-    }
+	public Date getSchoolDate() {
+		return schoolDate;
+	}
 
-    public void setSchoolDate(Date schoolDate) {
-        this.schoolDate = schoolDate;
-    }
+	public void setSchoolDate(Date schoolDate) {
+		this.schoolDate = schoolDate;
+	}
 
-    public String getSchoolLicense() {
-        return schoolLicense;
-    }
+	public String getSchoolLicense() {
+		return schoolLicense;
+	}
 
-    public void setSchoolLicense(String schoolLicense) {
-        this.schoolLicense = schoolLicense == null ? null : schoolLicense.trim();
-    }
+	public void setSchoolLicense(String schoolLicense) {
+		this.schoolLicense = schoolLicense == null ? null : schoolLicense.trim();
+	}
 
-    public String getSchoolMaster() {
-        return schoolMaster;
-    }
+	public String getSchoolMaster() {
+		return schoolMaster;
+	}
 
-    public void setSchoolMaster(String schoolMaster) {
-        this.schoolMaster = schoolMaster == null ? null : schoolMaster.trim();
-    }
+	public void setSchoolMaster(String schoolMaster) {
+		this.schoolMaster = schoolMaster == null ? null : schoolMaster.trim();
+	}
 
-    public String getSchoolPhone() {
-        return schoolPhone;
-    }
+	public String getSchoolPhone() {
+		return schoolPhone;
+	}
 
-    public void setSchoolPhone(String schoolPhone) {
-        this.schoolPhone = schoolPhone == null ? null : schoolPhone.trim();
-    }
+	public void setSchoolPhone(String schoolPhone) {
+		this.schoolPhone = schoolPhone == null ? null : schoolPhone.trim();
+	}
 
-    public Integer getRoleId() {
-        return roleId;
-    }
+	public Integer getRoleId() {
+		return roleId;
+	}
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
 }

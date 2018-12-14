@@ -1,28 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.SchoolMapper">
-  <resultMap id="BaseResultMap" type="com.great.bean.School">
-    <id column="SCHOOL_ID" jdbcType="DECIMAL" property="schoolId" />
-    <result column="SCHOOL_ACCOUNT" jdbcType="VARCHAR" property="schoolAccount" />
-    <result column="SCHOOL_PWD" jdbcType="VARCHAR" property="schoolPwd" />
-    <result column="SCHOOL_NAME" jdbcType="VARCHAR" property="schoolName" />
-    <result column="SCHOOL_STATE" jdbcType="DECIMAL" property="schoolState" />
-    <result column="SCHOOL_DATE" jdbcType="TIMESTAMP" property="schoolDate" />
-    <result column="SCHOOL_LICENSE" jdbcType="VARCHAR" property="schoolLicense" />
-    <result column="SCHOOL_MASTER" jdbcType="VARCHAR" property="schoolMaster" />
-    <result column="SCHOOL_PHONE" jdbcType="VARCHAR" property="schoolPhone" />
-    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
-  </resultMap>
-  
-   	<select id="login" parameterType="java.util.Map" resultMap="BaseResultMap">
-		select SCHOOL_ID,SCHOOL_ACCOUNT,SCHOOL_PWD,SCHOOL_NAME,SCHOOL_STATE,SCHOOL_DATE,SCHOOL_LICENSE,SCHOOL_MASTER,SCHOOL_PHONE,ROLE_ID
-		from T_SCHOOL where SCHOOL_ACCOUNT = #{account} and SCHOOL_PWD = #{pwd} 
+	<resultMap id="BaseResultMap" type="com.great.bean.School">
+		<id column="SCHOOL_ID" jdbcType="DECIMAL" property="schoolId" />
+		<result column="SCHOOL_ACCOUNT" jdbcType="VARCHAR"
+			property="schoolAccount" />
+		<result column="SCHOOL_PWD" jdbcType="VARCHAR"
+			property="schoolPwd" />
+		<result column="SCHOOL_NAME" jdbcType="VARCHAR"
+			property="schoolName" />
+		<result column="SCHOOL_STATE" jdbcType="DECIMAL"
+			property="schoolState" />
+		<result column="SCHOOL_DATE" jdbcType="TIMESTAMP"
+			property="schoolDate" />
+		<result column="SCHOOL_LICENSE" jdbcType="VARCHAR"
+			property="schoolLicense" />
+		<result column="SCHOOL_MASTER" jdbcType="VARCHAR"
+			property="schoolMaster" />
+		<result column="SCHOOL_PHONE" jdbcType="VARCHAR"
+			property="schoolPhone" />
+		<result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+	</resultMap>
+
+	<select id="login" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		SCHOOL_ID,SCHOOL_ACCOUNT,SCHOOL_PWD,SCHOOL_NAME,SCHOOL_STATE,SCHOOL_DATE,SCHOOL_LICENSE
+		,SCHOOL_MASTER,SCHOOL_PHONE,ROLE_ID from T_SCHOOL where SCHOOL_ACCOUNT
+		= #{account} and SCHOOL_PWD =
+		#{pwd}
 	</select>
 	<!--驾校申请 -->
 	<insert id="addSchool" parameterType="com.great.bean.School">
 		insert into t_school
 		(SCHOOL_ID,SCHOOL_ACCOUNT,SCHOOL_PWD,SCHOOL_NAME,SCHOOL_LICENSE,SCHOOL_MASTER,SCHOOL_PHONE)
 		values
-		(seq_t_school.nextval,#{schoolAccount},#{schoolPwd},#{schoolName},#{schoolLicense},#{schoolMaster},#{schoolPhone})
+		(seq_t_school.nextval,#{schoolAccount},#{schoolPwd},#{schoolName},#{schoolLicense},
+		#{schoolMaster},#{schoolPhone})
 	</insert>
+
+	<!-- 后台驾校删除 -->
+	<update id="del" parameterType="com.great.bean.School">
+		update T_SCHOOL set
+		SCHOOL_STATE=99 where SCHOOL_ID=#{schoolId};
+	</update>
+
+	<!-- 后台修改驾校状态 -->
+	<update id="update" parameterType="com.great.bean.School">
+		update T_SCHOOL set
+		SCHOOL_STATE=#{schoolState} where SCHOOL_ID=#{schoolId};
+	</update>
+
+	<!-- 后台查询所有驾校 -->
+	<select id="queryAll" parameterType="com.great.bean.School"
+		resultType="java.util.Map">
+		select * from T_SCHOOL where SCHOOL_STATE!=99;
+	</select>
+
 </mapper>
