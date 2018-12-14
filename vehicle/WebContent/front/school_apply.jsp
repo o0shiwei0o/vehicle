@@ -1,52 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">   
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/Validform_v5.3.2.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery.serializejson.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/base.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/base.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/valistyle.css">	
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/index.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>学员注册</title>
+<title>驾校开通申请</title>
+<style>
+	#reg input{
+		width:40%;
+	}
+</style>
 </head>
 <body>
-<!--内容部分每个界面不同的地方-->
-<div class="left con">
-    <!--所在位置-->
-    <div class="perSerTab"><span>当前位置：</span><a href="javascript:void(0)">【驾校申请】</a> </div>
-    <!--内容部分-->
-    <div class="perSerCon left">
-        <div class="perSevchage left borderNo ">
-            <p class="caseTailTop">驾校申请登记</p>
-        </div>
-        <div class="left persolSerCon borderNo">
-            <table border="1" class="askTable">
-                <tr><td class="tdLable">公司名称</td><td><input type="text" class="caseInput" name="schoolName"/></td><td class="tdLable">公司地址</td><td><input type="text" class="caseInput"/></td></tr>
-                <tr><td class="tdLable">营业执照编号</td><td><input type="text" class="caseInput"/></td><td class="tdLable">企业标识号</td><td><input type="text" class="caseInput"/></td></tr>
-                <tr><td class="tdLable">公司类型</td><td><input type="text" class="caseInput"/></td><td class="tdLable">法定代表人姓名</td><td><input type="text" class="caseInput"/></td></tr>
-                <tr><td class="tdLable">经营范围</td><td><input type="text" class="caseInput"/></td><td class="tdLable">公司车辆</td><td><input type="text" class="caseInput"/></td></tr>
-                <tr><td class="tdLable">成立日期</td><td><input type="text" class="caseInput"/></td><td class="tdLable">学员人数</td><td><input type="text" class="caseInput"/></td></tr>
-               <!--  <tr><td class="tdLable">收费标准及依据</td><td colspan="3"><label>选项</label><input type="radio" class="caseRadio"/><label>选项</label><input type="radio" class="caseRadio"/></td></tr> -->
-            </table>
-
-        </div>
-        <p class="casefoot"><button class="saveBut">申请</button><button class="closeBut">取消</button></p>
-
-    </div>
-
-
-
-
-</div>
-<!--底部-->
-<footer class="left footer">
-
-    <div class="left footerLogo"><img src="img/red.png"> </div><br>
-    <div class="left footText"><p><span>主管单位：福建省交通管理运输厅 </span><span>承办单位:厦门思维科技有限公司</span></p>
-    </div>
-
-</footer>
-</div>	
+	<!--内容部分每个界面不同的地方-->
+	<div class="left con">
+		<!--所在位置-->
+		<div class="perSerTab">
+			<span>当前位置：</span><a href="javascript:void(0)">【驾校申请】</a>
+		</div>
+		<!--内容部分-->
+		<div class="perSerCon left">
+			<div class="perSevchage left borderNo ">
+				<p class="caseTailTop">驾校申请登记</p>
+			</div>
+			<form id="reg" method='post'>
+				<div class="left persolSerCon borderNo">
+					<table border="1" class="askTable">
+						<tr>
+							<td class="tdLable">驾校帐号</td>
+							<td><input type="text" class="caseInput"
+								name="schoolAccount" datatype="s1-5" errormsg="密码至少5个字符,最多10个字符！"/><br>
+							<span class="Validform_checktip"></span>								
+							</td>
+							<td class="tdLable" >驾校名称</td>
+							<td><input type="text" class="caseInput" name="schoolName"  datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！" /><br>
+							<span class="Validform_checktip"></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdLable">驾校密码</td>
+							<td>
+								<input type="password" class="caseInput" name="schoolPwd"  datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！" /><br>
+								<span class="Validform_checktip"></span>
+							</td>
+							<td class="tdLable">营业执照编码</td>
+							<td><input type="text" class="caseInput" name="schoolLicense" datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！"/><br>
+							<span class="Validform_checktip"></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdLable">确认驾校密码</td>
+							<td>
+								<input type="password" class="caseInput"
+								name="schoolPwd2" datatype="s5-10" errormsg="保持两个密码一致" recheck='schoolPwd'/><br>
+								<span class="Validform_checktip" ></span>
+								</td>
+							<td class="tdLable">法人代表姓名</td>
+							<td><input type="text" class="caseInput" name="schoolMaster" datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！"/><br>
+							<span class="Validform_checktip" ></span></td>
+						</tr>
+						<tr>
+						<td class="tdLable">驾校联系方式</td>
+						<td><input type="text" class="caseInput" name="schoolPhone" datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！"/><br>
+						<span class="Validform_checktip" ></span>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="tdLable">成立日期</td>
+						<td><input type="text" class="caseInput" /></td>
+						<td class="tdLable">学员人数</td>
+						<td><input type="text" class="caseInput" /></td>
+					</tr> -->
+						<!--  <tr><td class="tdLable">收费标准及依据</td><td colspan="3"><label>选项</label><input type="radio" class="caseRadio"/><label>选项</label><input type="radio" class="caseRadio"/></td></tr> -->
+					</table>
+				</div>
+				<p class="casefoot">
+					<button class="saveBut" type="submit">申请</button>
+					<button class="closeBut" onclick="back()">返回</button>
+				</p>
+			</form>
+		</div>
+	</div>
+	<!--底部-->
+	<footer class="left footer">
+		<div class="left footerLogo">
+			<img src="${pageContext.request.contextPath}/img/red.png">
+		</div>
+		<br>
+		<div class="left footText">
+			<p>
+				<span>主管单位：福建省交通管理运输厅 </span><span>承办单位:厦门思维科技有限公司</span>
+			</p>
+		</div>
+	</footer>
 </body>
+<script>
+$("#reg").Validform({
+	tiptype:3,
+	ajaxPost:true,
+	beforeSubmit:function(curform){
+		$.ajax({
+			type:'post',
+			url : "${pageContext.request.contextPath}/front/school/addSchool.handler",
+			contentType: 'application/json',
+			data:JSON.stringify($("#reg").serializeJSON()),
+			success:function(data){
+				if(data != 'y'){
+						window.alert("申请成功");
+						window.history.back();
+				} else {
+						window.alert("申请失败");
+						}
+				    }
+				})
+			return false;
+		}
+	});
+	
+function back(){
+	window.history.back();
+}
+</script>
 </html>

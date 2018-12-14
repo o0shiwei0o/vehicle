@@ -4,9 +4,8 @@
 <html>
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2_min.js"></script>  
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2.js"></script>  
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.serializejson.js"></script>  
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">   
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/> 
@@ -40,7 +39,7 @@
 			</div> 
 			<div>
 				<input type="submit" value="注册" class="btn btn-primary" id="js-btn-login" />&nbsp;&nbsp;
-				<input type="button" value="返回" class="btn btn-primary" id="js-btn-login"/>
+				<input type="button" value="返回" class="btn btn-primary" id=""/>
 			</div>
 		</form>
 	</section>

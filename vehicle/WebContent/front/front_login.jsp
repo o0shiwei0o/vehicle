@@ -4,7 +4,7 @@
 <html>
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">   
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/> 
@@ -70,20 +70,5 @@ $("#reg").Validform({
 	}
 })
 	
-	/* $.ajax({
-		type:"post",
-		url:"${pageContext.request.contextPath}/front/login/frontLogin.handler",
-		data:$("#context").serialize(),
-		dataType:'json',
-		success:function(data){
-			if(data.status == 'y'){
-				window.alert(data.info);
-				window.top.location.href="${pageContext.request.contextPath}/go/front/index.handler";
-			}else{
-				window.alert(data.info);
-			}
-		}
-	}); */
-
 </script>
 </html>

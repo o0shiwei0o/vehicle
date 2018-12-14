@@ -37,12 +37,14 @@ function partChange(){
 }
 //子菜单显示
 function listLook(){
-    $("#navList li").hover(function(){
-        $(this).find(".navCon").slideDown();
-    },function(){
-        $(this).find(".navCon").slideUp();
+    $("#navList li").click(function(){
+    	var nav = $(this).find(".navCon");
+    	if(nav.css("display") == 'block'){
+    		$(this).find(".navCon").slideUp();
+    	}else{
+    		$(this).find(".navCon").slideDown();
+    	}
     })
-
 }
 
 //查询Tab切换

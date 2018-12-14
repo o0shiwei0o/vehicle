@@ -15,7 +15,10 @@
         <div class="indexConFind">
            <ul class="tabUl"><li ><span class="tabActive"></span>驾校查询</li></ul>
             <div class="tabCon">
-                <div style="display: block"><input type="text" placeholder="请输入驾校关键字"><input type="button" ></div>
+                <div style="display: block">
+	                <input type="text" placeholder="请输入驾校关键字">
+	                <input type="button" style="top:22px">
+                </div>
             </div>
         </div>
 </div>

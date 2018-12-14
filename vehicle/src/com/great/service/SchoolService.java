@@ -16,4 +16,8 @@ public class SchoolService {
 	public School login(Map<String, Object> map) throws Exception{
 		return schoolMapper.login(map);
 	}
+	// 驾校申请
+	public boolean addSchool(School school) throws Exception {
+		return schoolMapper.addSchool(school);
+	}
 }

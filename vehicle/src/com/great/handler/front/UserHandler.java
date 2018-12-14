@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.great.bean.Page;
 import com.great.bean.User;
 import com.great.service.UserService;
 import com.great.util.Result;
@@ -90,8 +89,8 @@ public class UserHandler {
 		PageHelper.startPage(now, 5);//5是条数
 		PageInfo p = new PageInfo(user);
 		int count = p.getSize();
-		Page page = new Page(count,now, user);
-		mav.getModel().put("page", page);
+//		Page page = new Page(count,now, user);
+//		mav.getModel().put("page", page);
 		mav.setViewName("/back/user_list");
 		return mav;
 	}
@@ -112,8 +111,8 @@ public class UserHandler {
 			PageHelper.startPage(now, 5);//5是条数
 			PageInfo p = new PageInfo(user);
 			int count = p.getSize();
-			Page page = new Page(count,now, user);
-			mav.getModel().put("page", page);
+//			Page page = new Page(count,now, user);
+//			mav.getModel().put("page", page);
 			mav.setViewName("/back/user_list");
 			return mav;
 		}else {
