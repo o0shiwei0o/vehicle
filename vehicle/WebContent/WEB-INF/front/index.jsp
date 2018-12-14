@@ -13,7 +13,7 @@
 		}
 	</style>
 </head>
-	<jsp:include page="/front/top.jsp" flush="true"></jsp:include>
-	<iframe name="right" src="${pageContext.request.contextPath}/front/head.jsp"  frameborder="0"></iframe>
-<noframes></noframes>
+	<jsp:include page="/WEB-INF/front/top.jsp" flush="true"></jsp:include>
+	<iframe name="right" src="${pageContext.request.contextPath}/go/front/head.handler"  frameborder="0"></iframe>
+	<noframes></noframes>
 </html>

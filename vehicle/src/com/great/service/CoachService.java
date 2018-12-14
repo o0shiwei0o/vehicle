@@ -13,8 +13,8 @@ import com.great.dao.CoachMapper;
 public class CoachService {
 	@Resource
 	private CoachMapper coachMapper;
-	public Coach login(Coach coach) throws Exception{
-		return coachMapper.login(coach);
+	public Coach login(Map<String,Object> map) throws Exception{
+		return coachMapper.login(map);
 	}
 	public List<Map> queryAll() throws Exception{
 		return coachMapper.queryAll();

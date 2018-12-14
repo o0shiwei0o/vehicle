@@ -14,5 +14,44 @@
     <result column="USER_STATE" jdbcType="DECIMAL" property="userState" />
     <result column="USER_DATE" jdbcType="TIMESTAMP" property="userDate" />
     <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+    <collection property="coachList" resultMap="coachMap"></collection>
+    <collection property="schoolList" resultMap="schoolMap"></collection>
   </resultMap>
+  <resultMap type="com.great.bean.Coach" id="coachMap">
+		<result property="coachId" column="COACH_ID"/>
+		<result property="coachName" column="COACH_NAME"/>
+  </resultMap>
+  <resultMap type="com.great.bean.School" id="schoolMap">
+		<result property="schoolId" column="SCHOOL_ID"/>
+		<result property="schoolName" column="SCHOOL_NAME"/>
+  </resultMap>
+	<select id="userList" parameterType="java.util.Map" resultMap="BaseResultMap" >
+		select C.COACH_NAME,S.SCHOOL_NAME,U.USER_ID,U.USER_ACCOUNT,U.USER_PWD,U.USER_NAME,U.USER_PHONE,U.USER_CARD,U.USER_LEVEL,U.COACH_ID,U.SCHOOL_ID,U.USER_STATE,U.USER_DATE,U.ROLE_ID
+		from T_USER U left join T_COACH C on U.COACH_ID=C.COACH_ID left join T_SCHOOL S on U.SCHOOL_ID=S.SCHOOL_ID
+	</select>
+	
+  
+  	<select id="login" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select USER_ID,USER_ACCOUNT,USER_PWD,USER_NAME,USER_PHONE,USER_CARD,USER_LEVEL,COACH_ID,SCHOOL_ID,USER_STATE,USER_DATE,ROLE_ID
+		from T_USER where USER_ACCOUNT = #{account} and USER_PWD = #{pwd}
+	</select>
+	
+	<insert id="userAdd" parameterType="com.great.bean.User">
+		insert into t_user(USER_ID,USER_ACCOUNT,USER_PWD,USER_NAME,USER_PHONE) 
+		values (seq_t_user.nextval,#{userAccount},#{userPwd},#{userName},#{userPhone})
+	</insert>
+	
+	<select id="checkAccount" parameterType="String" resultType="int">
+		 select count(0) from T_USER where USER_ACCOUNT = #{userAccount}
+	</select>
+	
+	<update id="deleteUser" parameterType="map">
+		update T_USER
+		<set>
+			<if test="userState!=null and userState!=''">
+				USER_STATE=#{userState}
+			</if>
+		</set>
+		where USER_ID=#{userId}
+	</update>
 </mapper>

@@ -1,17 +1,14 @@
 package com.great.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.great.bean.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer userId);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    User selectByPrimaryKey(Integer userId);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
+    public User login(Map<String, Object> map) throws Exception;
+    public int userAdd(User user)throws Exception;
+    public int checkAccount(String userAccount) throws Exception;
+    public List<User> userList(Map<String, Object> map) throws Exception;
+    public int deleteUser(Map<String, Object> map) throws Exception;
 }

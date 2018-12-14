@@ -11,4 +11,8 @@
     <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
   </resultMap>
  
+ 	<select id="login" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select CONTROL_ID,CONTROL_ACCOUNT,CONTROL_PWD,CONTROL_NAME,CONTROL_STATE,CONTROL_DATE,ROLE_ID
+		from T_CONTROL where CONTROL_ACCOUNT = #{account} and CONTROL_PWD = #{pwd}
+	</select>
 </mapper>

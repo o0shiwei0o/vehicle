@@ -13,10 +13,10 @@
     <result column="COACH_PHONE" jdbcType="VARCHAR" property="coachPhone" />
     <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
   </resultMap>
-  <select id="login" parameterType="com.great.bean.Coach" resultMap="BaseResultMap">
+  <select id="login" parameterType="map" resultMap="BaseResultMap">
   	select COACH_ID,COACH_ACCOUNT,COACH_NAME,SCHOOL_ID,COACH_STATE,COACH_DATE,COACH_CARD
-  	COACH_PHONE,ROLE_ID from t_coach where COACH_ACCOUNT = #{coachAccount} and 
-  	COACH_PWD = #{coachPwd} and COACH_STATE != 99
+  	COACH_PHONE,ROLE_ID from t_coach where COACH_ACCOUNT = #{account} and 
+  	COACH_PWD = #{pwd} and COACH_STATE != 99
   </select>
   <select id="queryAll" resultType="map">
   	select COACH_ID,COACH_ACCOUNT,COACH_NAME,SCHOOL_NAME,p.PARAMETER_NAME,COACH_CARD,

@@ -4,6 +4,7 @@
 <html>
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2_min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">   
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/> 
@@ -12,47 +13,21 @@
 <title>前端登录</title>
 </head>
 <body>
-<header class="headStyle">
-	<div class="left headLeft">
-         <img src="${pageContext.request.contextPath}/img/logo2.jpg"/>
-        机动车驾驶员计时培训系统
-    </div>
-    <div class="right headRight">
-        <ul>
-            <li><i class="i_reg"></i><a href="#">登录</a> </li>
-            <li><i class="i_reg01 i_reg"></i><a href="${pageContext.request.contextPath}/user_add.jsp">注册</a> </li>
-        </ul>
-    </div>
-</header>
-<nav class="nav left">
-    <ul class="left" id="navList"><li><a href="${pageContext.request.contextPath}/front.jsp">首页</a></li>
-        <li><a href="persolServer.html">个人菜单</a><div class="navCon">
-            <ul class="navConUl">
-                <li><a href="#"><p><img src="${pageContext.request.contextPath}/img/perso_02.png"> </p>
-                    <p>户籍办理 </p></a>
-                </li>
-            </ul>
-        </div>
-        <li><a href="law.html">行业动态</a> </li>
-        <li><a href="case.html">通知公告</a> </li>
-        <li><a href="${pageContext.request.contextPath}/school_apply.jsp">驾校开通申请</a> </li>
-    </ul>
-</nav>
-<br>
-<br>
 <div class="container">
 	<section id="content">
-		<form action="">
+		<form id="reg" mehtod="post">
 			<h1>登录</h1>
 			<div>
-				<input type="text" placeholder="用户名" required="" id="userName" />
+				<input type="text" placeholder="账号" required="" name="userAccount" required/>
+				<span class='Validform_checktip'></span>
 			</div>
 			<div>
-				<input type="password" placeholder="密码" required="" id="userPwd" />
+				<input type="password" placeholder="密码" required="" name="userPwd" required/>
+				<span class='Validform_checktip'></span>
 			</div>
 			<div>
-				<select name="roleId" >
-				    <option value="0">请选择</option>
+				<select name="roleId" id="role">
+				    <option value="0" >请选择</option>
 			        <option value="1">学员</option>
 			        <option value="2">教练</option>
 			        <option value="3">驾校</option>
@@ -63,11 +38,52 @@
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
 			</div> 
 			<div>
-				<input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
-				<a href="#">忘记密码?</a>
+				<input type="submit" value="登录" class="btn btn-primary" id="js-btn-login" />
 			</div>
 		</form>
 	</section>
 </div>	
 </body>
+<script>
+$("#reg").Validform({
+	tiptype:2,
+	ajaxPost:true,
+	beforeSubmit:function(curform){
+		if($("#role").val()==0){
+			window.alert("请选择角色登录");
+		}else {
+			$.ajax({
+				type:'post',
+				url:"${pageContext.request.contextPath}/front/login/frontLogin.handler",
+				data:$("#reg").serialize(),
+				success:function(data){
+					if(data.status == 'y'){
+						window.alert(data.info);
+						window.top.location.href="${pageContext.request.contextPath}/go/front/index.handler";
+					}else {
+						window.alert(data.info);
+					}
+				}
+			});
+		return false;
+		}
+	}
+})
+	
+	/* $.ajax({
+		type:"post",
+		url:"${pageContext.request.contextPath}/front/login/frontLogin.handler",
+		data:$("#context").serialize(),
+		dataType:'json',
+		success:function(data){
+			if(data.status == 'y'){
+				window.alert(data.info);
+				window.top.location.href="${pageContext.request.contextPath}/go/front/index.handler";
+			}else{
+				window.alert(data.info);
+			}
+		}
+	}); */
+
+</script>
 </html>

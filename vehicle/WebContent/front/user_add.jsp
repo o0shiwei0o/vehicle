@@ -4,6 +4,9 @@
 <html>
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/Validform_v5.3.2_min.js"></script>  
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.serializejson.js"></script>  
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">   
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/> 
@@ -12,63 +15,59 @@
 <title>学员注册</title>
 </head>
 <body>
-<header class="headStyle">
-	<div class="left headLeft">
-         <img src="${pageContext.request.contextPath}/img/logo2.jpg"/>
-        机动车驾驶员计时培训系统
-    </div>
-    <div class="right headRight">
-        <ul>
-            <li><i class="i_reg"></i><a href="${pageContext.request.contextPath}/front_login.jsp">登录</a> </li>
-            <li><i class="i_reg01 i_reg"></i><a href="#">注册</a> </li>
-        </ul>
-    </div>
-</header>
-<nav class="nav left">
-    <ul class="left" id="navList"><li><a href="${pageContext.request.contextPath}/front.jsp">首页</a></li>
-        <li><a href="persolServer.html">个人菜单</a><div class="navCon">
-            <ul class="navConUl">
-                <li><a href="#"><p><img src="${pageContext.request.contextPath}/img/perso_02.png"> </p>
-                    <p>户籍办理 </p></a>
-                </li>
-            </ul>
-        </div>
-        <li><a href="law.html">行业动态</a> </li>
-        <li><a href="case.html">通知公告</a> </li>
-        <li><a href="${pageContext.request.contextPath}/school_apply.jsp">驾校开通申请</a> </li>
-    </ul>
-</nav>
 <div class="container">
 	<section id="content">
-		<form action="">
+		<form id="reg" method='post' >
 			<h1>学员注册</h1>
 			<div>
-				<input type="text" placeholder="学员账号" required="" name="userAccount" />
+				<input type="text" placeholder="账号" required="" name="userAccount" id="userAccount" datatype="s1-10" errormsg="用户账号至少5个字符,最多10个字符!"
+				ajaxurl="${pageContext.request.contextPath}/front/user/checkAccount.handler" sucmsg="账号还未被使用，可以注册！"/>
 			</div>
 			<div>
-				<input type="text" placeholder="学员名称" required="" name="userName" />
+				<input type="text" placeholder="学员名称" required="" name="userName" id="userName" datatype="s1-10" errormsg="用户名至少5个字符,最多10个字符!"/>
 			</div>
 			<div>
-				<input type="password" placeholder="密码" required="" name="userPwd" />
+				<input type="password" placeholder="密码" required="" name="userPwd" id="userPwd" datatype="s5-10" errormsg="密码至少5个字符,最多10个字符！"/>
 			</div>
 			<div>
-				<input type="password" placeholder="确认密码" required="" name="newPwd" />
+				<input type="password" placeholder="确认密码" required="" name="newPwd" id="newPwd" datatype="s5-10" errormsg="保持两个密码一致" recheck='userPwd'/>
 			</div>
 			<div>
-				<input type="text" placeholder="手机号" required="" name="userPhone" />
-			</div>
-			<div>
-				<input type="text" placeholder="邮箱" required="" name="userEmail" />
+				<input type="text" placeholder="手机号" required="" name="userPhone" id="userPhone" datatype="m" errormsg="请填写正确的手机号码！"/>
 			</div>
 		    <div class="">
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
 			</div> 
 			<div>
-				<input type="submit" value="注册" class="btn btn-primary" id="js-btn-login"/>&nbsp;&nbsp;
+				<input type="submit" value="注册" class="btn btn-primary" id="js-btn-login" />&nbsp;&nbsp;
 				<input type="button" value="返回" class="btn btn-primary" id="js-btn-login"/>
 			</div>
 		</form>
 	</section>
 </div>	
 </body>
+<script>
+$("#reg").Validform({
+	tiptype:2,
+	ajaxPost:true,
+	beforeSubmit:function(curform){
+		$.ajax({
+			type:'post',
+			url:"${pageContext.request.contextPath}/front/user/userAdd.handler",
+			data:$("#reg").serialize(),
+			contentType: 'application/json',
+			data:JSON.stringify($("#reg").serializeJSON()),
+			success:function(data){
+				if(data != 'y'){
+					window.alert("注册成功");
+					window.history.back();
+				}else {
+					window.alert("注册失败");
+				}
+			}
+		})
+		return false;
+	}
+});
+</script>
 </html>

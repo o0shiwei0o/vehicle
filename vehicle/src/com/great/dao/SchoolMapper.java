@@ -1,17 +1,9 @@
 package com.great.dao;
 
+import java.util.Map;
+
 import com.great.bean.School;
 
 public interface SchoolMapper {
-    int deleteByPrimaryKey(Integer schoolId);
-
-    int insert(School record);
-
-    int insertSelective(School record);
-
-    School selectByPrimaryKey(Integer schoolId);
-
-    int updateByPrimaryKeySelective(School record);
-
-    int updateByPrimaryKey(School record);
+	public School login(Map<String, Object> map) throws Exception;
 }

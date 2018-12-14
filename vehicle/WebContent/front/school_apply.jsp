@@ -11,31 +11,6 @@
 <title>学员注册</title>
 </head>
 <body>
-<header class="headStyle">
-	<div class="left headLeft">
-        <img src="${pageContext.request.contextPath}/img/logo.png"/>
-    </div>
-    <div class="right headRight">
-        <ul>
-            <li><i class="i_reg"></i><a href="${pageContext.request.contextPath}/front_login.jsp">登录</a> </li>
-            <li><i class="i_reg01 i_reg"></i><a href="${pageContext.request.contextPath}/user_add.jsp">注册</a> </li>
-        </ul>
-    </div>
-</header>
-<nav class="nav left">
-    <ul class="left" id="navList"><li><a href="${pageContext.request.contextPath}/front.jsp">首页</a></li>
-        <li><a href="persolServer.html">个人菜单</a><div class="navCon">
-            <ul class="navConUl">
-                <li><a href="#"><p><img src="${pageContext.request.contextPath}/img/perso_02.png"> </p>
-                    <p>户籍办理 </p></a>
-                </li>
-            </ul>
-        </div>
-        <li><a href="law.html">行业动态</a> </li>
-        <li><a href="case.html">通知公告</a> </li>
-        <li><a href="#">驾校开通申请</a> </li>
-    </ul>
-</nav>
 <!--内容部分每个界面不同的地方-->
 <div class="left con">
     <!--所在位置-->
